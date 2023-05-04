@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Liste des equipes</h2>
+    <div class="flex-grow-1 p-1">
+
+        <table mat-table [dataSource]="equipes$ | async" class="mat-elevation-z8">
+            <!-- name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef> Nom </th>
+                <td mat-cell *matCellDef="let element"> {{element.name }} </td>
+            </ng-container>
+
+            <!-- sponsor Column -->
+            <ng-container matColumnDef="sponsor">
+                <th mat-header-cell *matHeaderCellDef> Sponsor </th>
+                <td mat-cell *matCellDef="let element"> {{element.sponsor}} </td>
+            </ng-container>
+
+            <!-- update Column -->
+            <ng-container matColumnDef="update">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element" (click)="updateOrCreateEquipe(element); $event.stopPropagation();">
+                    <mat-icon class="text-blue-500">edit</mat-icon>
+                </td>
+            </ng-container>
+
+            <!-- delete Column -->
+            <ng-container matColumnDef="delete">
+                <th mat-header-cell *matHeaderCellDef></th>
+                <td mat-cell *matCellDef="let element" (click)="deleteEquipe(element.id); $event.stopPropagation();">
+                    <mat-icon class="text-red-500">delete</mat-icon>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="showEquipeDetails(row.id)"></tr>
+        </table>
+        
+    </div>
+    <div class="btn-holder">
+        <button mat-fab color="warn" (click)="updateOrCreateEquipe(); $event.stopPropagation();"><mat-icon>add</mat-icon></button>
+    </div>
+</div>

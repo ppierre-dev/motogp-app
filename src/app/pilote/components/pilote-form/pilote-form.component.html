@@ -1,0 +1,52 @@
+<h2 mat-dialog-title>{{title}}</h2>
+
+<form [formGroup]="piloteForm" (ngSubmit)="onSubmit()">
+  <div class="form">
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>identifiant</mat-label>
+      <input matInput formControlName="id" readonly />
+    </mat-form-field> -->
+
+    <mat-form-field appearance="outline">
+      <mat-label>Prénom</mat-label>
+      <input matInput formControlName="firstname" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nom</mat-label>
+      <input matInput formControlName="lastname" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Numéro</mat-label>
+      <input matInput formControlName="number" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Moto</mat-label>
+      <input matInput formControlName="motoId" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Poids</mat-label>
+      <input matInput formControlName="weight" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Taille</mat-label>
+      <input matInput formControlName="height" />
+    </mat-form-field>
+
+    <!-- <mat-select>
+      <mat-option *ngFor="let equipe of equipes" [value]="equipe">
+        {{equipe}}
+      </mat-option>
+    </mat-select> -->
+  </div>
+
+
+  <mat-dialog-actions align="end">
+    <button mat-button type="button" mat-dialog-close>Annuler</button>
+    <button mat-raised-button type="submit" cdkFocusInitial color="warn" [disabled]="!piloteForm.valid || !piloteForm.dirty">{{submitBtnName}}</button>
+  </mat-dialog-actions>
+</form>
